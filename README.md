@@ -9,3 +9,8 @@
 |ver|公開日|変更点|
 |---|---|---|
 |0.0.1|2021/08/10|公開|
+
+### スペシャルサンクス
+- Contributorの皆様
+- 使ってくださった皆様
+- [正規表現チェッカー](https://weblabo.oscasierra.net/tools/regex/)
