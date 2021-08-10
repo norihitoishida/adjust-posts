@@ -20,7 +20,11 @@ textarea {
     font-size: 16px;
     resize: vertical;
 }
-
+#otayori_adjusted{
+  font-family: "ＭＳ ゴシック",sans-serif;
+  color: #000;
+  line-height:1.5em;
+}
 button {
     margin: auto;
 }

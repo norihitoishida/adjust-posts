@@ -2,18 +2,16 @@ function cleanup(otayori) {
     // String型にする
     otayori = String(otayori);
 
-    // 半角・全角スペースと改行を「。」にする
-    otayori = otayori.replace(/ /g, "。");
-    otayori = otayori.replace(/　/g, "。");
-    otayori = otayori.replace(/\r?\n/g, "。");
+    if(document.getElementById("kutennewline").checked) {
+      // 「。」を「。改行」にする
+      otayori = otayori.replace(/(。{1,})([^\n。])/g, "$1\n$2");
+    }
 
-    // 「。」が2個以上連続してる所を「。」1個にする
-    otayori = otayori.replace(/。{2,}/g, "。");
-
-    // 「。」を「。改行改行」にする
-    otayori = otayori.replace(/。/g, "。\n\n");
-    
     return otayori;
+}
+
+function linespace(){
+  document.getElementById("otayori_adjusted").style.lineHeight =Number(document.getElementById("linespace").value)+1
 }
 
 function adjust() {
@@ -47,3 +45,5 @@ document.getElementById("zoomin").addEventListener("click", zoomin);
 document.getElementById("zoomout").addEventListener("click", zoomout);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("initialize").addEventListener("click", initialize);
+document.getElementById("linespace").addEventListener("input", linespace);
+document.getElementById("kutennewline").addEventListener("change", adjust);
