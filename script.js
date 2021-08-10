@@ -2,6 +2,9 @@ function cleanup(otayori) {
     // String型にする
     otayori = String(otayori);
 
+    // 読点無しの入力に対して文末に。がつかないこと対策
+    otayori += "。";
+
     // 半角・全角スペースと改行を「。」にする
     otayori = otayori.replace(/ /g, "。");
     otayori = otayori.replace(/　/g, "。");
