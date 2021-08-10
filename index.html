@@ -15,14 +15,15 @@
     <div class="container">
         <textarea id="otayori_raw" type="text">入力</textarea>
         <div>
-            <button id="adjust">調整</button>
+            <button id="adjust" style="font-weight:bold;">調整</button>
             <button id="zoomin">拡大</button>
             <button id="zoomout">縮小</button>
+            <button id="clear">消去</button>
+            <button id="initialize">文字サイズ初期化</button>
         </div>
         <textarea id="otayori_adjusted" type="text" rows="10"></textarea>
     </div>
     <script>
-
         function cleanup(otayori) {
             return otayori;
         };
@@ -33,23 +34,32 @@
             document.getElementById("otayori_adjusted").value = otayori;
         };
         
-        document.getElementById("adjust").addEventListener("click", paste);
-
         function zoomin(){
-            let a = document.getElementById("otayori_raw").style.backgroundColor.value;
-            alert(a);
-            document.getElementById("otayori_adjusted").style.backgroundColor = "#ff0"
-            /*
-            let fs = document.getElementById("otayori_adjusted").style.fontSize;
-            alert("fs="+ fs);
-            fs = Number(fs);
-            alert("fs="+ fs);
-            document.getElementById("otayori_adjusted").style.fontSize = `${fs + 1}`;
-            */
+            fontSize = Math.min(fontSize+5, 100);
+            document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
         }
 
+        function zoomout(){
+            fontSize = Math.max(fontSize-5, 1);
+            document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
+        }
+
+        function clear(){
+            document.getElementById("otayori_adjusted").value = "";
+        }
+
+        function initialize(){
+            fontSize = 16;
+            document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
+        }
+
+        let fontSize = 16;
+        document.getElementById("adjust").addEventListener("click", paste);
         document.getElementById("zoomin").addEventListener("click", zoomin);
-        // document.getElementById("zoomout").addEventListener("click", 
+        document.getElementById("zoomout").addEventListener("click", zoomout);
+        document.getElementById("clear").addEventListener("click", clear);
+        document.getElementById("initialize").addEventListener("click", initialize);
+
     </script>
 </body>
 </html>
