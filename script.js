@@ -7,6 +7,12 @@ function cleanup(otayori) {
       otayori = otayori.replace(/(。{1,})([^\n。])/g, "$1\n$2");
     }
 
+    if(document.getElementById("addkuten").checked) {
+      // 「。」の無い行末に「。」を追加する
+      otayori = otayori.replace(/([^。\n])([\n])/g, "$1。$2");
+      otayori = otayori.replace(/([^。\n])$/g, "$1。");
+    }
+
     return otayori;
 }
 
@@ -47,3 +53,4 @@ document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("initialize").addEventListener("click", initialize);
 document.getElementById("linespace").addEventListener("input", linespace);
 document.getElementById("kutennewline").addEventListener("change", adjust);
+document.getElementById("addkuten").addEventListener("change", adjust);
