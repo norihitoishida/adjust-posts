@@ -7,10 +7,20 @@ function cleanup(otayori) {
       otayori = otayori.replace(/(。{1,})([^\n。])/g, "$1\n$2");
     }
 
+    if(document.getElementById("spacenewline").checked) {
+      // 「 」を「 改行」にする
+      otayori = otayori.replace(/([ 　]{1,})([^\n 　])/g, "\n$2");
+    }
+
     if(document.getElementById("addkuten").checked) {
       // 「。」の無い行末に「。」を追加する
       otayori = otayori.replace(/([^。\n])([\n])/g, "$1。$2");
       otayori = otayori.replace(/([^。\n])$/g, "$1。");
+    }
+
+    if(document.getElementById("doublenewline").checked) {
+      // 連続しない改行を2連改行にする
+      otayori = otayori.replace(/([^\n])(\n)([^\n])/g, "$1\n\n$3");
     }
 
     return otayori;
@@ -54,3 +64,5 @@ document.getElementById("initialize").addEventListener("click", initialize);
 document.getElementById("linespace").addEventListener("input", linespace);
 document.getElementById("kutennewline").addEventListener("change", adjust);
 document.getElementById("addkuten").addEventListener("change", adjust);
+document.getElementById("spacenewline").addEventListener("change", adjust);
+document.getElementById("doublenewline").addEventListener("change", adjust);
