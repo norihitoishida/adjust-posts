@@ -3,35 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://norihitoishida.github.io/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://norihitoishida.github.io/images/favicon-16x16.png" sizes="16x16">
     <title>お便り調整くん</title>
 </head>
 <body>
-    <div class="header">お便り調整くん</div>
+    <div class="bg-dark text-white text-center m-1 p-2">お便り調整くん</div>
     <div class="container">
-        <a href="https://github.com/norihitoishida/adjust-posts" target="_blank">詳細</a>
-        <textarea id="otayori_raw" type="text">入力</textarea>
+        <div class="text-center"><a href="https://github.com/norihitoishida/adjust-posts" target="_blank">詳細</a></div>
+        <div class="form-group my-3">
+            <textarea id="otayori_raw" class="form-control" placeholder="入力"></textarea>
+        </div>
         <div>
-            <button id="adjust" style="font-weight:bold;">調整</button>
-            <button id="zoomin">拡大</button>
-            <button id="zoomout">縮小</button>
-            <button id="clear">消去</button>
+            <button id="adjust" class="btn-primary fw-bold">調整</button>
+            <button id="example"   >例文</button>
+            <button id="zoomin"    >拡大</button>
+            <button id="zoomout"   >縮小</button>
+            <button id="clear"     >消去</button>
             <button id="initialize">文字サイズ初期化</button>
             行間<input type="number" id="linespace" step="0.1" value="0.5" max="2" min="0">行
         </div>
-        <div>
-            <input type="checkbox" id="kutennewline" checked>「。」で改行する</input>
-            <input type="checkbox" id="addkuten" checked>行末に「。」を追加する</input>
-            <input type="checkbox" id="spacenewline" checked>スペースで改行する</input>
-            <input type="checkbox" id="doublenewline" checked>改行数を固定する(空白1行)</input>
+        <div class="p-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="kutennewline" checked>
+                <label class="form-check-label" for="kutennewline">「。」で改行する</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="addkuten" checked>
+                <label class="form-check-label" for="addkuten">行末に「。」を追加する</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="spacenewline" checked>
+                <label class="form-check-label" for="spacenewline">スペースで改行する</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="doublenewline" checked>
+                <label class="form-check-label" for="doublenewline">改行数を固定する（空白 1 行）</label>
+            </div>
         </div>
-        <textarea id="otayori_adjusted" type="text" rows="auto"></textarea>
+        <div class="form-group my-3">
+            <textarea id="otayori_adjusted" class="form-control"></textarea>
+        </div>
     </div>
     <script src="./script.js">
     </script>

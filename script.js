@@ -45,6 +45,14 @@ function adjust() {
   document.getElementById("otayori_adjusted").style.height = `${scrollHeight}px`;
 }
 
+function example() {
+  let text = "俺ねぇ、アレのライブ行ったよ、ラブライブ。4回目のライブかな。どこでやってた奴か忘れたけど。" +
+              "そう雪ヤバかったやつ。あん時に食ったねえ～…え！？（気づき）そう、あの時牛丼食ったんだよ帰り道に。" +
+              "寒い中食った牛丼がめちゃくちゃ美味かったんだよなぁ……ｗ人生で一番美味かった。" +
+              "それでものの旨さって値段じゃないんだなって分かったわ。チー牛だったかどうかはちょっと忘れた。";
+  document.getElementById("otayori_raw").value = text;
+}
+
 function zoomin(){
   fontSize = Math.min(fontSize+5, 100);
   document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
@@ -68,6 +76,7 @@ function initialize(){
 
 let fontSize = 16;
 document.getElementById("adjust").addEventListener("click", adjust);
+document.getElementById("example").addEventListener("click", example);
 document.getElementById("zoomin").addEventListener("click", zoomin);
 document.getElementById("zoomout").addEventListener("click", zoomout);
 document.getElementById("clear").addEventListener("click", clear);
