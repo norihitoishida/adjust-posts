@@ -1,40 +1,36 @@
 function cleanup(otayori) {
-    // String型にする
-    otayori = String(otayori);
-    
-    if(document.getElementById("kutennewline").checked) {
-      // 「。」を「。改行」にする
-      otayori = otayori.replace(/(。+)/g, "$1\n");
-    }
 
-<<<<<<< HEAD
-    // 読点無しの入力に対して文末に。がつかないこと対策
-    otayori += "。";
+  // String型にする
+  otayori = String(otayori);
+  
+  // 文頭のスペースを削除
+  if (otayori.charAt(0)===" " || otayori.charAt(0)==="　") {
+    otayori = otayori.slice(1);
+  }
 
-    // 半角・全角スペースと改行を「。」にする
-    otayori = otayori.replace(/ /g, "。");
-    otayori = otayori.replace(/　/g, "。");
-    otayori = otayori.replace(/\r?\n/g, "。");
-=======
-    if(document.getElementById("spacenewline").checked) {
-      // 「 」を「改行」にする
-      otayori = otayori.replace(/([ 　]+)/g, "\n");
-    }
->>>>>>> develop
+  // 「 」を「改行」にする
+  if(document.getElementById("spacenewline").checked) {
+    otayori = otayori.replace(/([ 　]+)/g, "\n");
+  }
 
-    if(document.getElementById("addkuten").checked) {
-      // 「。」の無い行末に「。」を追加する
-      // 「エクスクラメーション」「クエスチョン」「括弧閉じ」の場合は無視する
-      otayori = otayori.replace(/([^。!！?？」\n])([\n])/g, "$1。$2");
-      otayori = otayori.replace(/([^。!！?？」\n])$/g, "$1。");
-    }
+  // 「。」を「。改行」にする
+  if(document.getElementById("kutennewline").checked) {
+    otayori = otayori.replace(/(。+)/g, "$1\n");
+  }
 
-    if(document.getElementById("doublenewline").checked) {
-      // 改行数を固定する(空白1行)
-      otayori = otayori.replace(/\n+/g, "\n\n");
-    }
+  // 「。」の無い行末に「。」を追加する
+  // 「エクスクラメーション」「クエスチョン」「括弧閉じ」の場合は無視する
+  if(document.getElementById("addkuten").checked) {    
+    otayori = otayori.replace(/([^。!！?？」\n])([\n])/g, "$1。$2");
+    otayori = otayori.replace(/([^。!！?？」\n])$/g, "$1。");
+  }
 
-    return otayori;
+  // 改行数を固定する(空白1行)
+  if(document.getElementById("doublenewline").checked) {
+    otayori = otayori.replace(/\n+/g, "\n\n");
+  }
+
+  return otayori;
 }
 
 function linespace(){
