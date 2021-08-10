@@ -1,33 +1,34 @@
 function cleanup(otayori) {
     // String型にする
     otayori = String(otayori);
-
+    
     if(document.getElementById("kutennewline").checked) {
       // 「。」を「。改行」にする
-      otayori = otayori.replace(/(。{1,})([^\n。])/g, "$1\n$2");
+      otayori = otayori.replace(/(。+)/g, "$1\n");
     }
 
     if(document.getElementById("spacenewline").checked) {
-      // 「 」を「 改行」にする
-      otayori = otayori.replace(/([ 　]{1,})([^\n 　])/g, "\n$2");
+      // 「 」を「改行」にする
+      otayori = otayori.replace(/([ 　]+)/g, "\n");
     }
 
     if(document.getElementById("addkuten").checked) {
       // 「。」の無い行末に「。」を追加する
-      otayori = otayori.replace(/([^。\n])([\n])/g, "$1。$2");
-      otayori = otayori.replace(/([^。\n])$/g, "$1。");
+      // 「エクスクラメーション」「クエスチョン」「括弧閉じ」の場合は無視する
+      otayori = otayori.replace(/([^。!！?？」\n])([\n])/g, "$1。$2");
+      otayori = otayori.replace(/([^。!！?？」\n])$/g, "$1。");
     }
 
     if(document.getElementById("doublenewline").checked) {
-      // 連続しない改行を2連改行にする
-      otayori = otayori.replace(/([^\n])(\n)([^\n])/g, "$1\n\n$3");
+      // 改行数を固定する(空白1行)
+      otayori = otayori.replace(/\n+/g, "\n\n");
     }
 
     return otayori;
 }
 
 function linespace(){
-  document.getElementById("otayori_adjusted").style.lineHeight =Number(document.getElementById("linespace").value)+1
+  document.getElementById("otayori_adjusted").style.lineHeight = Number(document.getElementById("linespace").value)+1
 }
 
 function adjust() {
