@@ -1,7 +1,13 @@
 function cleanup(otayori) {
     // String型にする
     otayori = String(otayori);
+    
+    if(document.getElementById("kutennewline").checked) {
+      // 「。」を「。改行」にする
+      otayori = otayori.replace(/(。+)/g, "$1\n");
+    }
 
+<<<<<<< HEAD
     // 読点無しの入力に対して文末に。がつかないこと対策
     otayori += "。";
 
@@ -9,14 +15,30 @@ function cleanup(otayori) {
     otayori = otayori.replace(/ /g, "。");
     otayori = otayori.replace(/　/g, "。");
     otayori = otayori.replace(/\r?\n/g, "。");
+=======
+    if(document.getElementById("spacenewline").checked) {
+      // 「 」を「改行」にする
+      otayori = otayori.replace(/([ 　]+)/g, "\n");
+    }
+>>>>>>> develop
 
-    // 「。」が2個以上連続してる所を「。」1個にする
-    otayori = otayori.replace(/。{2,}/g, "。");
+    if(document.getElementById("addkuten").checked) {
+      // 「。」の無い行末に「。」を追加する
+      // 「エクスクラメーション」「クエスチョン」「括弧閉じ」の場合は無視する
+      otayori = otayori.replace(/([^。!！?？」\n])([\n])/g, "$1。$2");
+      otayori = otayori.replace(/([^。!！?？」\n])$/g, "$1。");
+    }
 
-    // 「。」を「。改行改行」にする
-    otayori = otayori.replace(/。/g, "。\n\n");
-    
+    if(document.getElementById("doublenewline").checked) {
+      // 改行数を固定する(空白1行)
+      otayori = otayori.replace(/\n+/g, "\n\n");
+    }
+
     return otayori;
+}
+
+function linespace(){
+  document.getElementById("otayori_adjusted").style.lineHeight = Number(document.getElementById("linespace").value)+1
 }
 
 function adjust() {
@@ -50,3 +72,8 @@ document.getElementById("zoomin").addEventListener("click", zoomin);
 document.getElementById("zoomout").addEventListener("click", zoomout);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("initialize").addEventListener("click", initialize);
+document.getElementById("linespace").addEventListener("input", linespace);
+document.getElementById("kutennewline").addEventListener("change", adjust);
+document.getElementById("addkuten").addEventListener("change", adjust);
+document.getElementById("spacenewline").addEventListener("change", adjust);
+document.getElementById("doublenewline").addEventListener("change", adjust);
