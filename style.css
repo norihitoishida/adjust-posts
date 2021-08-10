@@ -12,6 +12,13 @@
     margin: auto;
 }
 
+.abstract {
+    margin: 5px 3px;
+    padding: 2px;
+    text-align: left;
+    border: solid 1px #ccc;
+}
+
 textarea {
     width: 100%;
     margin: 3px;
