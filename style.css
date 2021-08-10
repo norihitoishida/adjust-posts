@@ -28,14 +28,6 @@ textarea {
     resize: vertical;
 }
 
-label {
-    text-align: left;
-}
-
 button {
     margin: auto;
-}
-
-#otayori_adjusted {
-    font-size: large;
 }
