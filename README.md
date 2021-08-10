@@ -1,4 +1,4 @@
-### adjust-posts
+### お便り調整くん
 - [Github Pages](https://norihitoishida.github.io/adjust-posts/)で公開しています。
 - 文章を見やすく変換する無料/オープンソースのツールです。
 - 入力内容は取得やアクセス解析等は一切行っていません。安心してお使い下さい。
