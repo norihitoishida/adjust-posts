@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>お便り調整くん</title>
+</head>
+<body>
+    <div class="header">お便り調整くん</div>
+    <div class="container">
+        <textarea id="otayori_raw" type="text">入力</textarea>
+        <div>
+            <button id="adjust">調整</button>
+            <button id="zoomin">拡大</button>
+            <button id="zoomout">縮小</button>
+        </div>
+        <textarea id="otayori_adjusted" type="text" rows="10"></textarea>
+    </div>
+    <script>
+
+        function cleanup(otayori) {
+            return otayori;
+        };
+
+        function paste() {
+            let otayori = document.getElementById("otayori_raw").value;
+            otayori = cleanup(otayori);
+            document.getElementById("otayori_adjusted").value = otayori;
+        };
+        
+        document.getElementById("adjust").addEventListener("click", paste);
+
+        function zoomin(){
+            let a = document.getElementById("otayori_raw").style.backgroundColor.value;
+            alert(a);
+            document.getElementById("otayori_adjusted").style.backgroundColor = "#ff0"
+            /*
+            let fs = document.getElementById("otayori_adjusted").style.fontSize;
+            alert("fs="+ fs);
+            fs = Number(fs);
+            alert("fs="+ fs);
+            document.getElementById("otayori_adjusted").style.fontSize = `${fs + 1}`;
+            */
+        }
+
+        document.getElementById("zoomin").addEventListener("click", zoomin);
+        // document.getElementById("zoomout").addEventListener("click", 
+    </script>
+</body>
+</html>
