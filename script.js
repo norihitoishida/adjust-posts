@@ -38,28 +38,29 @@ function linespace(){
 }
 
 function adjust() {
-    let otayori = document.getElementById("otayori_raw").value;
-    otayori = cleanup(otayori);
-    document.getElementById("otayori_adjusted").value = otayori;
+  let otayori = document.getElementById("otayori_raw").value;
+  otayori = cleanup(otayori);
+  document.getElementById("otayori_adjusted").value = otayori;
+  document.getElementById("otayori_adjusted").style.height = `${document.getElementById("otayori_adjusted").scrollHeight+3}px`;
 }
 
 function zoomin(){
-    fontSize = Math.min(fontSize+5, 100);
-    document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
+  fontSize = Math.min(fontSize+5, 100);
+  document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
 }
 
 function zoomout(){
-    fontSize = Math.max(fontSize-5, 1);
-    document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
+  fontSize = Math.max(fontSize-5, 1);
+  document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
 }
 
 function clear(){
-    document.getElementById("otayori_adjusted").value = "";
+  document.getElementById("otayori_adjusted").value = "";
 }
 
 function initialize(){
-    fontSize = 16;
-    document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
+  fontSize = 16;
+  document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
 }
 
 let fontSize = 16;
