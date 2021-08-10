@@ -1,5 +1,5 @@
 ### お便り調整くん
-- Github Pagesで[公開]((https://norihitoishida.github.io/adjust-posts/))しています。
+- Github Pagesで[公開](https://norihitoishida.github.io/adjust-posts/)しています。
 - 文章を見やすく変換する無料/オープンソースのツールです。
 - 入力内容の取得やアクセス解析等は一切行っていません。安心してお使い下さい。
 - ご意見/ご要望はissuesか[作者のTwitter](https://twitter.com/norihitoishida)にお願いします。
