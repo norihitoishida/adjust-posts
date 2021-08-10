@@ -13,7 +13,7 @@
 }
 
 .abstract {
-    margin: 5px 3px;
+    margin: 5px auto auto 1px;
     padding: 2px;
     text-align: left;
     border: solid 1px #ccc;
