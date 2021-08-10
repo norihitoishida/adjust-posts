@@ -41,17 +41,20 @@ function adjust() {
   let otayori = document.getElementById("otayori_raw").value;
   otayori = cleanup(otayori);
   document.getElementById("otayori_adjusted").value = otayori;
-  document.getElementById("otayori_adjusted").style.height = `${document.getElementById("otayori_adjusted").scrollHeight+3}px`;
+  let scrollHeight = document.getElementById("otayori_adjusted").scrollHeight;
+  document.getElementById("otayori_adjusted").style.height = `${scrollHeight}px`;
 }
 
 function zoomin(){
   fontSize = Math.min(fontSize+5, 100);
   document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
+  adjust();
 }
 
 function zoomout(){
   fontSize = Math.max(fontSize-5, 1);
   document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
+  adjust();
 }
 
 function clear(){
