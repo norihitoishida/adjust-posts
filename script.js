@@ -13,7 +13,8 @@ function cleanup(otayori) {
     otayori = otayori.replace(/([ 　]+)/g, "\n");
   }
 
-  // 「。」を「。改行」にする
+  // 「。」を「。改行」にする(既に「。改行」は否定的先読みで無視)
+  // 「。 改行」の場合スペースを消去
   if(document.getElementById("kutennewline").checked) {
     otayori = otayori.replace(/(。+)([ 　]*)(?!\n)/g, "$1\n");
   }
