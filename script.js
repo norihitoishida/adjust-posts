@@ -21,8 +21,8 @@ function cleanup(otayori) {
   // 「。」の無い行末に「。」を追加する
   // 「エクスクラメーション」「クエスチョン」「括弧閉じ」「、」の場合は無視する
   if(document.getElementById("addkuten").checked) {
-    otayori = otayori.replace(/([^。!！?？、」\n])([\n])/g, "$1。$2");
-    otayori = otayori.replace(/([^。!！?？、」\n])$/g, "$1。");
+    otayori = otayori.replace(/([^。!！?？、,」\n])([\n])/g, "$1。$2");
+    otayori = otayori.replace(/([^。!！?？、,」\n])$/g, "$1。");
   }
 
   // 改行数を固定する(空白1行)
