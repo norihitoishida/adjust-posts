@@ -33,7 +33,7 @@ function cleanup(otayori) {
   return otayori;
 }
 
-function linespace(){
+function linespace() {
   document.getElementById("otayori_adjusted").style.lineHeight = Number(document.getElementById("linespace").value)+1
 }
 
@@ -66,12 +66,22 @@ function initialize(){
   document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
 }
 
+function example() {
+  let sampletxt =
+    "俺ね、アレのライブ行ったよ、ラブライブ。4回目のライブかな。どこでやってた奴か忘れたけど。" +
+    "そう雪ヤバかったやつ。あん時に食ったねえ…そう、あの時牛丼食ったんだよ帰り道に。" +
+    "寒い中食った牛丼がめちゃくちゃ美味かったんだよなぁ…人生で一番美味かった。" +
+    "それで食べ物の美味しさって値段じゃないんだなって思ったわ。チー牛だったかどうかはちょっと忘れた。";
+  document.getElementById("otayori_raw").value = sampletxt;
+}
+
 let fontSize = 16;
 document.getElementById("adjust").addEventListener("click", adjust);
 document.getElementById("zoomin").addEventListener("click", zoomin);
 document.getElementById("zoomout").addEventListener("click", zoomout);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("initialize").addEventListener("click", initialize);
+document.getElementById("example").addEventListener("click", example);
 document.getElementById("linespace").addEventListener("input", linespace);
 document.getElementById("kutennewline").addEventListener("change", adjust);
 document.getElementById("addkuten").addEventListener("change", adjust);
