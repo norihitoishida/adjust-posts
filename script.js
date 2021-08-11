@@ -15,7 +15,7 @@ function cleanup(otayori) {
 
   // 「。」を「。改行」にする
   if(document.getElementById("kutennewline").checked) {
-    otayori = otayori.replace(/(。+)/g, "$1\n");
+    otayori = otayori.replace(/(。+)([ 　]*)(?!\n)/g, "$1\n");
   }
 
   // 「。」の無い行末に「。」を追加する
