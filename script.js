@@ -59,7 +59,7 @@ function zoomout(){
 }
 
 function clear() {
-  document.getElementById("otayori_raw").value = "入力";
+  document.getElementById("otayori_raw").value = "";
   document.getElementById("otayori_adjusted").value = "";
 }
 
