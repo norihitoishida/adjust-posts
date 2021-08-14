@@ -44,6 +44,7 @@ function adjust() {
   document.getElementById("otayori_adjusted").value = otayori;
   let scrollHeight = document.getElementById("otayori_adjusted").scrollHeight;
   document.getElementById("otayori_adjusted").style.height = `${scrollHeight}px`;
+  linespace();
 }
 
 function zoomin(){
@@ -75,6 +76,7 @@ function example() {
     "寒い中食った牛丼がめちゃくちゃ美味かったんだよなぁ…人生で一番美味かった。" +
     "それで食べ物の美味しさって値段じゃないんだなって思ったわ。チー牛だったかどうかはちょっと忘れた。";
   document.getElementById("otayori_raw").value = sampletxt;
+  adjust();
 }
 
 let fontSize = 16;
