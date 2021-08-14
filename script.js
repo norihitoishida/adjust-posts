@@ -10,7 +10,7 @@ function cleanup(otayori) {
 
   // 「 」を「改行」にする
   if(document.getElementById("spacenewline").checked) {
-    otayori = otayori.replace(/([ 　]+)/g, "\n");
+    otayori = otayori.replace(/([ 　]+)(?![a-z]|[A-Z])(?<![a-z]|[A-Z])/g, "\n");
   }
 
   // 「。」を「。改行」にする(既に「。改行」は否定的先読みで無視)
