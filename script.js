@@ -13,17 +13,16 @@ function cleanup(otayori) {
     otayori = otayori.replace(/([ 　]+)/g, "\n");
   }
 
-  // 「。」を「。改行」にする(既に「。改行」は否定的先読みで無視)
+  // 「。」を「。改行」にする
   // 「。 改行」の場合スペースを消去
   if(document.getElementById("kutennewline").checked) {
-    otayori = otayori.replace(/(。+)([ 　]*)(?!\n)/g, "$1\n");
+    otayori = otayori.replace(/(。+)([ 　]*)(?!$)/mg, "$1\n");
   }
 
   // 「。」の無い行末に「。」を追加する
   // 「エクスクラメーション」「クエスチョン」「括弧閉じ」「、」の場合は無視する
   if(document.getElementById("addkuten").checked) {
-    otayori = otayori.replace(/([^。!！?？、,.」\n])([\n])/g, "$1。$2");
-    otayori = otayori.replace(/([^。!！?？、,.」\n])$/g, "$1。");
+    otayori = otayori.replace(/([^。!！?？、,.」])$/mg, "$1。");
   }
 
   // 改行数を固定する(空白1行)
