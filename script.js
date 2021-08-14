@@ -45,16 +45,9 @@ function adjust() {
   document.getElementById("otayori_adjusted").style.height = `${scrollHeight}px`;
 }
 
-function zoomin(){
-  fontSize = Math.min(fontSize+5, 100);
+function fontsize(){
+  fontSize = Number(document.getElementById("fontsize").value);
   document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
-  adjust();
-}
-
-function zoomout(){
-  fontSize = Math.max(fontSize-5, 1);
-  document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
-  adjust();
 }
 
 function clear() {
@@ -62,10 +55,6 @@ function clear() {
   document.getElementById("otayori_adjusted").value = "";
 }
 
-function initialize(){
-  fontSize = 16;
-  document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
-}
 
 function example() {
   let sampletxt =
@@ -78,12 +67,10 @@ function example() {
 
 let fontSize = 16;
 document.getElementById("adjust").addEventListener("click", adjust);
-document.getElementById("zoomin").addEventListener("click", zoomin);
-document.getElementById("zoomout").addEventListener("click", zoomout);
 document.getElementById("clear").addEventListener("click", clear);
-document.getElementById("initialize").addEventListener("click", initialize);
 document.getElementById("example").addEventListener("click", example);
 document.getElementById("linespace").addEventListener("input", linespace);
+document.getElementById("fontsize").addEventListener("input", fontsize);
 document.getElementById("kutennewline").addEventListener("change", adjust);
 document.getElementById("addkuten").addEventListener("change", adjust);
 document.getElementById("spacenewline").addEventListener("change", adjust);
