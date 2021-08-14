@@ -77,6 +77,7 @@ function example() {
   document.getElementById("otayori_raw").value = sampletxt;
 }
 
+
 let fontSize = 16;
 document.getElementById("adjust").addEventListener("click", adjust);
 document.getElementById("zoomin").addEventListener("click", zoomin);
@@ -89,3 +90,6 @@ document.getElementById("kutennewline").addEventListener("change", adjust);
 document.getElementById("addkuten").addEventListener("change", adjust);
 document.getElementById("spacenewline").addEventListener("change", adjust);
 document.getElementById("doublenewline").addEventListener("change", adjust);
+document.getElementById("otayori_raw").addEventListener("paste", function(){
+    setTimeout(adjust, 10);       // 10ミリ秒後に実行（貼り付けが反映されてから実行）
+}, false);
