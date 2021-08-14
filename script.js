@@ -16,7 +16,7 @@ function cleanup(otayori) {
   // 「。」を「。改行」にする
   // 「。 改行」の場合スペースを消去
   if(document.getElementById("kutennewline").checked) {
-    otayori = otayori.replace(/(。+)([ 　]*)(?!$)/mg, "$1\n");
+    otayori = otayori.replace(/(。+[」)）]?)([ 　]*)(?!$)/mg, "$1\n");
   }
 
   // 「。」の無い行末に「。」を追加する
