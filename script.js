@@ -3,10 +3,8 @@ function format(otayori) {
   // String型にする
   otayori = String(otayori);
 
-  // 文頭のスペースを削除
-  if (otayori.charAt(0)===" " || otayori.charAt(0)==="　") {
-    otayori = otayori.slice(1);
-  }
+  // 文頭(行頭ではなく文全体の頭)のスペース/改行を削除
+  otayori = otayori.trim();
 
   // 「 」を「改行」にする(英語のスペースは改行しない)
   if(document.getElementById("spacenewline").checked) {
