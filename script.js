@@ -4,7 +4,7 @@ function format(otayori) {
   otayori = String(otayori);
 
   // 文頭(行頭ではなく文全体の頭)のスペース/改行を削除
-  otayori = otayori.trim();
+  otayori = otayori.trimStart();
 
   // 「 」を「改行」にする(英語のスペースは改行しない)
   if(document.getElementById("spacenewline").checked) {
