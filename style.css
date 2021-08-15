@@ -18,7 +18,7 @@ textarea {
     padding: 0.4em;
     font-size: 100%;
     font-size: 16px;
-    resize: vertical;
+    resize: none;
 }
 #otayori_adjusted{
   font-family: "ＭＳ ゴシック",sans-serif;
