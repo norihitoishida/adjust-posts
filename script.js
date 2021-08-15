@@ -28,7 +28,7 @@ function cleanup(otayori) {
     適当な薬品の入った瓶を傾けて。「
     とかほざいてた。友人は当然ハァ？って感じ。
     */
-    otayori = otayori.replace(/((?<=[」\)])|^)[^「\(\)」]*(([(「])|$)/mg, (match, offset, string) => {
+    otayori = otayori.replace(/((?<=[\)」）])|^)[^\(\)「」（）]*(([\(「（])|$)/mg, (match, offset, string) => {
       /*
       内側のreplaceで置換対象の末尾以外の「。」を「。改行」にする
       元の文の行末以外は末尾に左カッコがついているので改行されるが、元の文の行末の「。」は改行されない
@@ -61,7 +61,7 @@ function cleanup(otayori) {
     /*
     「。」の直後にカッコ閉じが入る場合にはカッコ閉じの後に改行
     */
-    otayori = otayori.replace(/(。+)([ 　]*)([」\)])(?!$)/mg, "$1$3\n");
+    otayori = otayori.replace(/(。+)([ 　]*)([\)」）])(?!$)/mg, "$1$3\n");
   }
 
   // 「。」の無い行末に「。」を追加する
