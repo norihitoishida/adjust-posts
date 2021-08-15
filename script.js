@@ -40,9 +40,14 @@ function adjust() {
   let otayori = document.getElementById("otayori_raw").value;
   otayori = format(otayori);
   document.getElementById("otayori_adjusted").value = otayori;
+  fontsize();
+  linespace();
+  var min_height = 10;
+  //一度縮めてscrollHeightを全体表示に必要な最低限の大きさになるようにする。
+  document.getElementById("otayori_adjusted").style.height=`${min_height}px`;
+  //scrollHeightより少し大きくなるようにheightを設定
   let scrollHeight = document.getElementById("otayori_adjusted").scrollHeight;
   document.getElementById("otayori_adjusted").style.height = `${scrollHeight+5}px`;
-  linespace();
 }
 
 function fontsize(){
@@ -71,8 +76,8 @@ let fontSize = 16;
 document.getElementById("adjust").addEventListener("click", adjust);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("example").addEventListener("click", example);
-document.getElementById("linespace").addEventListener("input", linespace);
-document.getElementById("fontsize").addEventListener("input", fontsize);
+document.getElementById("linespace").addEventListener("input", adjust);
+document.getElementById("fontsize").addEventListener("input", adjust);
 document.getElementById("kutennewline").addEventListener("change", adjust);
 document.getElementById("addkuten").addEventListener("change", adjust);
 document.getElementById("spacenewline").addEventListener("change", adjust);
