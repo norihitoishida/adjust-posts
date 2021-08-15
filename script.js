@@ -1,4 +1,4 @@
-function cleanup(otayori) {
+function format(otayori) {
 
   // String型にする
   otayori = String(otayori);
@@ -39,7 +39,7 @@ function linespace() {
 
 function adjust() {
   let otayori = document.getElementById("otayori_raw").value;
-  otayori = cleanup(otayori);
+  otayori = format(otayori);
   document.getElementById("otayori_adjusted").value = otayori;
   let scrollHeight = document.getElementById("otayori_adjusted").scrollHeight;
   document.getElementById("otayori_adjusted").style.height = `${scrollHeight}px`;
