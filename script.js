@@ -8,7 +8,7 @@ function cleanup(otayori) {
     otayori = otayori.slice(1);
   }
 
-  // 「 」を「改行」にする
+  // 「 」を「改行」にする(英語のスペースは改行しない)
   if(document.getElementById("spacenewline").checked) {
     otayori = otayori.replace(/([ 　]+)(?![a-z]|[A-Z])(?<![a-z]|[A-Z])/g, "\n");
   }
