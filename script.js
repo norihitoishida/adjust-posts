@@ -40,7 +40,7 @@ function adjust() {
   otayori = format(otayori);
   document.getElementById("otayori_adjusted").value = otayori;
   let scrollHeight = document.getElementById("otayori_adjusted").scrollHeight;
-  document.getElementById("otayori_adjusted").style.height = `${scrollHeight}px`;
+  document.getElementById("otayori_adjusted").style.height = `${scrollHeight+5}px`;
   linespace();
 }
 
