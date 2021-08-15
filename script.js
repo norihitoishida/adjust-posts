@@ -14,13 +14,13 @@ function format(otayori) {
   // 「。」を「。改行」にする
   // 「。 改行」の場合スペースを消去
   if(document.getElementById("kutennewline").checked) {
-    otayori = otayori.replace(/(。+)([ 　]*)(?!$)/mg, "$1\n");
+    otayori = otayori.replace(/(。+[」\)）]?)([ 　]*)(?!$)/mg, "$1\n");
   }
 
   // 「。」の無い行末に「。」を追加する
   // 「エクスクラメーション」「クエスチョン」「括弧閉じ」「、」の場合は無視する
   if(document.getElementById("addkuten").checked) {
-    otayori = otayori.replace(/([^。!！?？、,.」])$/mg, "$1。");
+    otayori = otayori.replace(/([^。!！?？、,.」）\)])$/mg, "$1。");
   }
 
   // 改行数を固定する(空白1行)
@@ -44,16 +44,9 @@ function adjust() {
   linespace();
 }
 
-function zoomin(){
-  fontSize = Math.min(fontSize+5, 100);
+function fontsize(){
+  fontSize = Number(document.getElementById("fontsize").value);
   document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
-  adjust();
-}
-
-function zoomout(){
-  fontSize = Math.max(fontSize-5, 1);
-  document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
-  adjust();
 }
 
 function clear() {
@@ -61,10 +54,6 @@ function clear() {
   document.getElementById("otayori_adjusted").value = "";
 }
 
-function initialize(){
-  fontSize = 16;
-  document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
-}
 
 function example() {
   let sampletxt =
@@ -79,12 +68,10 @@ function example() {
 
 let fontSize = 16;
 document.getElementById("adjust").addEventListener("click", adjust);
-document.getElementById("zoomin").addEventListener("click", zoomin);
-document.getElementById("zoomout").addEventListener("click", zoomout);
 document.getElementById("clear").addEventListener("click", clear);
-document.getElementById("initialize").addEventListener("click", initialize);
 document.getElementById("example").addEventListener("click", example);
 document.getElementById("linespace").addEventListener("input", linespace);
+document.getElementById("fontsize").addEventListener("input", fontsize);
 document.getElementById("kutennewline").addEventListener("change", adjust);
 document.getElementById("addkuten").addEventListener("change", adjust);
 document.getElementById("spacenewline").addEventListener("change", adjust);
