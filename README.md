@@ -15,3 +15,4 @@
 - Contributorの皆様
 - 使ってくださった皆様
 - [正規表現チェッカー](https://weblabo.oscasierra.net/tools/regex/)
+- [卯月コウ](https://www.youtube.com/channel/UC3lNFeJiTq6L3UWoz4g1e-A)
