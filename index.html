@@ -20,15 +20,15 @@
         <div>
             <button id="adjust" style="font-weight:bold;">調整</button>
             <button id="clear"     >クリア</button>
-            文字サイズ<input type="number" id="fontsize" step="2" value="20" max="50" min="6">
-            行間<input type="number" id="linespace" step="0.1" value="0" max="2" min="0">行
+            <label>文字サイズ<input type="number" id="fontsize" step="2" value="20" max="50" min="6"></label>
+            <label>行間<input type="number" id="linespace" step="0.1" value="0" max="2" min="0">行</label>
             <button id="example"   >例文</button>
         </div>
         <div>
-            <input type="checkbox" id="kutennewline" checked >「。」で改行する</input>
-            <input type="checkbox" id="addkuten" checked     >行末に「。」を追加する</input>
-            <input type="checkbox" id="spacenewline" checked >スペースで改行する</input>
-            <input type="checkbox" id="doublenewline" checked>改行数を固定する(空白1行)</input>
+            <input type="checkbox" id="kutennewline" checked ><label for="kutennewline">「。」で改行する</label>
+            <input type="checkbox" id="addkuten" checked     ><label for="addkuten">行末に「。」を追加する</label>
+            <input type="checkbox" id="spacenewline" checked ><label for="spacenewline">スペースで改行する</label>
+            <input type="checkbox" id="doublenewline" checked><label for="doublenewline">改行数を固定する(空白1行)</label>
         </div>
         <textarea id="otayori_adjusted" placeholder="調整した文章"></textarea>
     </div>

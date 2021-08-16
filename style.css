@@ -28,3 +28,9 @@ textarea {
 button {
     margin: auto;
 }
+label {
+    font-weight: normal;
+}
+input[type=checkbox] + label {
+    cursor: pointer;
+}
