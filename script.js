@@ -14,14 +14,14 @@ function format(otayori) {
   // 「。」を「。改行」にする
   // 「。 改行」の場合スペースを消去
   if(document.getElementById("kutennewline").checked) {
-    otayori = otayori.replace(/(。+[」\)）]?)([ 　]*)(?!$)/mg, "$1\n");
+    otayori = otayori.replace(/(。+[」)）]?)([ 　]*)(?!$)/mg, "$1\n");
   }
 
   // 「。」の無い行末に「。」を追加する
   // 「エクスクラメーション」「クエスチョン」「括弧閉じ」「、」の場合は無視する
   // 後読みで行末の手前に文字があり(=空行でない)、かつその文字が上記例外文字でない場合に「。」追加
   if(document.getElementById("addkuten").checked) {
-    otayori = otayori.replace(/(?<=.)(?<=[^。!！?？、,.」）\)])$/mg, "。");
+    otayori = otayori.replace(/(?<=.)(?<=[^。!！?？、,.」）)])$/mg, "。");
   }
 
   // 改行数を固定する(空白1行)
