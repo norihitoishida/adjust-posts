@@ -24,9 +24,9 @@ function format(otayori) {
     otayori = otayori.replace(/(?<=.)(?<=[^。!！?？、,.」）)])$/mg, "。");
   }
 
-  // 改行数を固定する(空白1行)
+  // 改行数を固定する
   if(document.getElementById("doublenewline").checked) {
-    otayori = otayori.replace(/\n+/g, "\n\n");
+    otayori = otayori.replace(/\n+/g, "\n");
   }
 
   return otayori;
