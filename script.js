@@ -6,6 +6,9 @@ function format(otayori) {
   // 文頭(行頭ではなく文全体の頭)のスペース/改行を削除
   otayori = otayori.trimStart();
 
+  // 行末のスペースを削除
+  otayori = otayori.replace(/([ 　]+)$/mg, "");
+
   // 「 」を「改行」にする(英語のスペースは改行しない)
   if(document.getElementById("spacenewline").checked) {
     otayori = otayori.replace(/([ 　]+)(?![a-z]|[A-Z])(?<![a-z]|[A-Z])/g, "\n");
