@@ -8,7 +8,7 @@ function format(otayori) {
 
   // 「 」を「改行」にする(英語のスペースは改行しない)
   if(document.getElementById("spacenewline").checked) {
-    otayori = otayori.replace(/([ 　]+)(?![a-z]|[A-Z])(?<![a-z]|[A-Z])/g, "\n");
+    otayori = otayori.replace(/(?<![a-z]|[A-Z])([ 　]+)(?![a-z]|[A-Z])/g, "\n");
   }
 
   // 「。」を「。改行」にする
