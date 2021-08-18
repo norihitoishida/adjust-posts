@@ -42,6 +42,10 @@ function adjust() {
   document.getElementById("otayori_adjusted").value = otayori;
   fontsize();
   linespace();
+  resize_adjusted_otayori_box();
+}
+
+function resize_adjusted_otayori_box(){
   var min_height = 10;
   //一度縮めてscrollHeightを全体表示に必要な最低限の大きさになるようにする。
   document.getElementById("otayori_adjusted").style.height=`${min_height}px`;
@@ -85,3 +89,6 @@ document.getElementById("doublenewline").addEventListener("change", adjust);
 document.getElementById("otayori_raw").addEventListener("paste", function(){
     setTimeout(adjust, 10);       // 10ミリ秒後に実行（貼り付けが反映されてから実行）
 }, false);
+window.addEventListener("load",fontsize);
+window.addEventListener("load",linespace);
+window.addEventListener("load",resize_adjusted_otayori_box);
