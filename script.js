@@ -89,8 +89,8 @@ document.getElementById("kutennewline").addEventListener("change", adjust);
 document.getElementById("addkuten").addEventListener("change", adjust);
 document.getElementById("spacenewline").addEventListener("change", adjust);
 document.getElementById("doublenewline").addEventListener("change", adjust);
-document.getElementById("otayori_raw").addEventListener("paste", function(){
-    setTimeout(adjust, 10);       // 10ミリ秒後に実行（貼り付けが反映されてから実行）
+document.getElementById("otayori_raw").addEventListener("input", function(){
+    setTimeout(adjust, 10);     // 10ミリ秒後に実行（入力が反映されてから実行）
 }, false);
 window.addEventListener("load",fontsize);
 window.addEventListener("load",linespace);
