@@ -1,7 +1,9 @@
 let otayori;
 let otayori_chunk;
+let num_row_per_chunk = 3;
 let current_chunk_index = 0;
 
+// 参考：https://yucatio.hatenablog.com/entry/2019/12/10/222311
 const sliceByNumber = (array, number) => {
   const length = Math.ceil(array.length / number)
   return new Array(length).fill().map((_, i) =>
@@ -53,7 +55,8 @@ function linespace() {
 function adjust() {
   otayori = document.getElementById("otayori_raw").value;
   otayori = format(otayori);
-  otayori_chunk = sliceByNumber(otayori.split(/(?<=\n)/g), 3);
+  // 参考：https://qiita.com/iwato/items/183e6dd676bf547ea341
+  otayori_chunk = sliceByNumber(otayori.split(/(?<=\n)/g), num_row_per_chunk);
   show_otayori_chunk();
   fontsize();
   linespace();
@@ -97,6 +100,7 @@ function fontsize(){
 function clear() {
   document.getElementById("otayori_raw").value = "";
   document.getElementById("otayori_adjusted").value = "";
+  adjust_looks();
   otayori = "";
   otayori_chunk = "";
   current_chunk_index = 0;
