@@ -18,6 +18,7 @@
         <a href="https://github.com/norihitoishida/adjust-posts" target="_blank">詳細</a>
         <textarea id="otayori_raw" placeholder="入力" spellcheck="false"></textarea>
         <div>
+            <button id="show_all"  >全文表示</button>
             <button id="clear"     >クリア</button>
             <label>文字サイズ<input type="number" id="fontsize" step="2" value="20" max="50" min="6"></label>
             <label>行間<input type="number" id="linespace" step="0.1" value="0.7" max="2" min="-1">行</label>
@@ -29,6 +30,7 @@
             <input type="checkbox" id="spacenewline" checked ><label for="spacenewline">スペースで改行する</label>
             <input type="checkbox" id="doublenewline" checked><label for="doublenewline">改行数を固定する</label>
         </div>
+        <h2>↓の枠内をクリックすると文章の続きが表示されます</h2>
         <textarea id="otayori_adjusted" placeholder="調整した文章" readonly></textarea>
     </div>
     <script src="./script.js">

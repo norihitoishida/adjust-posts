@@ -1,3 +1,14 @@
+let otayori;
+let otayori_chunk;
+let current_chunk_index = 0;
+
+const sliceByNumber = (array, number) => {
+  const length = Math.ceil(array.length / number)
+  return new Array(length).fill().map((_, i) =>
+    array.slice(i * number, (i + 1) * number)
+  )
+}
+
 function format(otayori) {
 
   // String型にする
@@ -40,12 +51,33 @@ function linespace() {
 }
 
 function adjust() {
-  let otayori = document.getElementById("otayori_raw").value;
+  otayori = document.getElementById("otayori_raw").value;
   otayori = format(otayori);
-  document.getElementById("otayori_adjusted").value = otayori;
+  otayori_chunk = sliceByNumber(otayori.split(/(?<=\n)/g), 3);
+  show_otayori_chunk();
   fontsize();
   linespace();
   resize_adjusted_otayori_box();
+}
+
+function adjust_looks() {
+  fontsize();
+  linespace();
+  resize_adjusted_otayori_box();
+}
+
+function show_otayori_chunk() {
+  if(otayori_chunk && current_chunk_index < otayori_chunk.length) {
+    document.getElementById("otayori_adjusted").value += otayori_chunk[current_chunk_index].join("");
+    adjust_looks();
+    current_chunk_index++;
+  }
+}
+
+function show_otayori_all() {
+  document.getElementById("otayori_adjusted").value = otayori;
+  adjust_looks();
+  current_chunk_index = otayori_chunk.length;
 }
 
 function resize_adjusted_otayori_box(){
@@ -65,6 +97,9 @@ function fontsize(){
 function clear() {
   document.getElementById("otayori_raw").value = "";
   document.getElementById("otayori_adjusted").value = "";
+  otayori = "";
+  otayori_chunk = "";
+  current_chunk_index = 0;
 }
 
 
@@ -80,10 +115,11 @@ function example() {
 
 
 let fontSize = 16;
+document.getElementById("show_all").addEventListener("click", show_otayori_all);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("example").addEventListener("click", example);
-document.getElementById("linespace").addEventListener("input", adjust);
-document.getElementById("fontsize").addEventListener("input", adjust);
+document.getElementById("linespace").addEventListener("input", adjust_looks);
+document.getElementById("fontsize").addEventListener("input", adjust_looks);
 document.getElementById("kutennewline").addEventListener("change", adjust);
 document.getElementById("addkuten").addEventListener("change", adjust);
 document.getElementById("spacenewline").addEventListener("change", adjust);
@@ -91,6 +127,7 @@ document.getElementById("doublenewline").addEventListener("change", adjust);
 document.getElementById("otayori_raw").addEventListener("input", function(){
     setTimeout(adjust, 10);     // 10ミリ秒後に実行（入力が反映されてから実行）
 }, false);
+document.getElementById("otayori_adjusted").addEventListener("click", show_otayori_chunk);
 window.addEventListener("load",fontsize);
 window.addEventListener("load",linespace);
 window.addEventListener("load",resize_adjusted_otayori_box);
