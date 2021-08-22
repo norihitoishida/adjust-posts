@@ -80,7 +80,6 @@ function example() {
 
 
 let fontSize = 16;
-document.getElementById("adjust").addEventListener("click", adjust);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("example").addEventListener("click", example);
 document.getElementById("linespace").addEventListener("input", adjust);
