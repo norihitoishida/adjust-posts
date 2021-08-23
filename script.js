@@ -36,7 +36,10 @@ function format(otayori) {
 }
 
 function linespace() {
-  document.getElementById("otayori_adjusted").style.lineHeight = Number(document.getElementById("linespace").value)+1
+  // 単位なし(推奨): 値を要素のフォントサイズに掛けたもの
+  // valueはstringなので注意
+  let ls = Number(document.getElementById("linespace").value);
+  document.getElementById("otayori_adjusted").style.lineHeight = ls + 1;
 }
 
 function adjust() {
@@ -49,24 +52,22 @@ function adjust() {
 }
 
 function resize_adjusted_otayori_box(){
-  var min_height = 10;
   //一度縮めてscrollHeightを全体表示に必要な最低限の大きさになるようにする。
-  document.getElementById("otayori_adjusted").style.height=`${min_height}px`;
+  document.getElementById("otayori_adjusted").style.height = "0.1px";
   //scrollHeightより少し大きくなるようにheightを設定
   let scrollHeight = document.getElementById("otayori_adjusted").scrollHeight;
   document.getElementById("otayori_adjusted").style.height = `${scrollHeight+5}px`;
 }
 
 function fontsize(){
-  fontSize = Number(document.getElementById("fontsize").value);
-  document.getElementById("otayori_adjusted").style.fontSize = `${fontSize}px`;
+  let fs = Number(document.getElementById("fontsize").value);
+  document.getElementById("otayori_adjusted").style.fontSize = `${fs}px`;
 }
 
 function clear() {
   document.getElementById("otayori_raw").value = "";
   document.getElementById("otayori_adjusted").value = "";
 }
-
 
 function example() {
   let sampletxt =
