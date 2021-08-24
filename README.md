@@ -1,7 +1,7 @@
 ### お便り調整くん
 - 文章を見やすく変換するツールです。
 - オープンソース/無料で、許諾不要で使用できます。
-- Github Pagesで公開しています([リンク](https://norihitoishida.github.io/adjust-posts/){:target="_blank"})。
+- Github Pagesで公開しています([リンク](https://norihitoishida.github.io/adjust-posts/){:target="\_blank"})。
 - 入力内容の取得やアクセス解析等は一切行っていません。安心してお使い下さい。
 - ご意見/ご要望はissuesか[作者のTwitter](https://twitter.com/norihitoishida)にお願いします。プルリク等も大歓迎です。
 
