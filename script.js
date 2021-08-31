@@ -95,3 +95,4 @@ document.getElementById("otayori_raw").addEventListener("input", function(){
 window.addEventListener("load",fontsize);
 window.addEventListener("load",linespace);
 window.addEventListener("load",resize_adjusted_otayori_box);
+window.addEventListener("resize", resize_adjusted_otayori_box);
