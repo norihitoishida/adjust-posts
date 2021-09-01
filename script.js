@@ -44,6 +44,7 @@ function linespace() {
 
 function adjust() {
   let otayori = document.getElementById("otayori_raw").value;
+  otayori_array[current_otayori_idx] = otayori;
   otayori = format(otayori);
   document.getElementById("otayori_adjusted").value = otayori;
   fontsize();
@@ -79,6 +80,52 @@ function example() {
   adjust();
 }
 
+var num_otayori = 0;
+var current_otayori_idx = 0;
+var otayori_array = [];
+
+function init_otayori_array() {
+  create_otayori();
+  load_otayori(0);
+}
+
+function create_otayori(){
+  num_otayori = num_otayori + 1;
+  document.getElementById("otayori_num").innerText = num_otayori;
+  otayori_array.push("");
+}
+
+function load_otayori(idx){
+  current_otayori_idx = idx;
+  document.getElementById("otayori_idx").value = current_otayori_idx+1;
+  if(idx==0){
+    document.getElementById("previous").style.visibility = "hidden";
+  }else{
+    document.getElementById("previous").style.visibility = "visible";
+  }
+  if(idx==num_otayori-1){
+    document.getElementById("next").innerText = "新規作成";
+  }else{
+    document.getElementById("next").innerText = "　　次へ";
+  }
+  document.getElementById("otayori_raw").value = otayori_array[current_otayori_idx];
+  adjust();
+}
+
+function on_previous(){
+  if(current_otayori_idx>0){
+    load_otayori(current_otayori_idx-1);
+  }
+}
+
+function on_next(){
+  if(current_otayori_idx==num_otayori-1){
+    create_otayori();
+  }
+  if(current_otayori_idx<num_otayori-1){
+    load_otayori(current_otayori_idx+1);
+  }
+}
 
 let fontSize = 16;
 document.getElementById("clear").addEventListener("click", clear);
@@ -92,6 +139,10 @@ document.getElementById("doublenewline").addEventListener("change", adjust);
 document.getElementById("otayori_raw").addEventListener("input", function(){
     setTimeout(adjust, 10);     // 10ミリ秒後に実行（入力が反映されてから実行）
 }, false);
+document.getElementById("previous").addEventListener("click", on_previous);
+document.getElementById("next").addEventListener("click", on_next);
+
+window.addEventListener("load",init_otayori_array);
 window.addEventListener("load",fontsize);
 window.addEventListener("load",linespace);
 window.addEventListener("load",resize_adjusted_otayori_box);

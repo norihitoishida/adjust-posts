@@ -29,6 +29,11 @@
             <input type="checkbox" id="spacenewline" checked ><label for="spacenewline">スペースで改行する</label>
             <input type="checkbox" id="doublenewline" checked><label for="doublenewline">改行数を固定する</label>
         </div>
+        <div>
+            <button id="previous"     >戻る</button>
+            <label><input type="number" id="otayori_idx" step="1" value="1" max="1" min="1" style="width:50px;">/<span id=otayori_num>1</span></label>
+            <button id="next"     >次へ</button>
+        </div>
         <textarea id="otayori_adjusted" placeholder="調整した文章"></textarea>
     </div>
     <script src="./script.js">
