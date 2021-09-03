@@ -102,6 +102,20 @@ function create_otayori(){
   document.getElementById("otayori_num").innerText = otayori_array.length;
 }
 
+function delete_otayori(index){
+  otayori_array.splice(index,1);
+  localStorage.setItem('otayori_array', JSON.stringify(otayori_array));
+  document.getElementById("otayori_num").innerText = otayori_array.length;
+}
+
+function delete_all_otayori(){
+  otayori_array=[]
+  create_otayori();
+  localStorage.setItem('otayori_array', JSON.stringify(otayori_array));
+  document.getElementById("otayori_num").innerText = otayori_array.length;
+}
+
+
 function load_otayori(idx){
   current_otayori_idx = idx;
   document.getElementById("otayori_idx").value = current_otayori_idx+1;
@@ -132,6 +146,23 @@ function on_next(){
   if(current_otayori_idx<otayori_array.length-1){
     load_otayori(current_otayori_idx+1);
   }
+}
+
+function on_delete(){
+  delete_otayori(current_otayori_idx);
+  if(otayori_array.length==0){
+    create_otayori();
+  }
+  if(current_otayori_idx>otayori_array.length-1){
+    current_otayori_idx=otayori_array.length-1;
+  }
+  load_otayori(current_otayori_idx);
+}
+
+
+function on_delete_all(){
+  delete_all_otayori();
+  load_otayori(0);
 }
 
 function init_config(){
@@ -166,6 +197,8 @@ document.getElementById("otayori_raw").addEventListener("input", function(){
 }, false);
 document.getElementById("previous").addEventListener("click", on_previous);
 document.getElementById("next").addEventListener("click", on_next);
+document.getElementById("delete").addEventListener("click", on_delete);
+document.getElementById("delete_all").addEventListener("click", on_delete_all);
 
 window.addEventListener("load",initialization);
 window.addEventListener("load",resize_adjusted_otayori_box);
