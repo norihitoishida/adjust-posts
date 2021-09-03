@@ -39,6 +39,7 @@ function linespace() {
   // 単位なし(推奨): 値を要素のフォントサイズに掛けたもの
   // valueはstringなので注意
   let ls = Number(document.getElementById("linespace").value);
+  localStorage.setItem('linespace', ls);
   document.getElementById("otayori_adjusted").style.lineHeight = ls + 1;
 }
 
@@ -62,6 +63,7 @@ function resize_adjusted_otayori_box(){
 
 function fontsize(){
   let fs = Number(document.getElementById("fontsize").value);
+  localStorage.setItem('fontsize', fs);
   document.getElementById("otayori_adjusted").style.fontSize = `${fs}px`;
 }
 
@@ -127,6 +129,22 @@ function on_next(){
   }
 }
 
+function init_config(){
+  ls = localStorage.getItem("linespace");
+  if(ls!=null){
+    document.getElementById("linespace").value=`${ls}`;
+  }
+  fs = localStorage.getItem("fontsize");
+  if(fs!=null){
+    document.getElementById("fontsize").value=`${fs}`;
+  }
+}
+
+function initialization(){
+  init_config();
+  init_otayori_array();
+}
+
 let fontSize = 16;
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("example").addEventListener("click", example);
@@ -142,7 +160,5 @@ document.getElementById("otayori_raw").addEventListener("input", function(){
 document.getElementById("previous").addEventListener("click", on_previous);
 document.getElementById("next").addEventListener("click", on_next);
 
-window.addEventListener("load",init_otayori_array);
-window.addEventListener("load",fontsize);
-window.addEventListener("load",linespace);
+window.addEventListener("load",initialization);
 window.addEventListener("load",resize_adjusted_otayori_box);
