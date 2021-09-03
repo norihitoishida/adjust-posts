@@ -82,7 +82,6 @@ function example() {
   adjust();
 }
 
-var num_otayori = 0;
 var current_otayori_idx = 0;
 var otayori_array = [];
 
@@ -92,9 +91,8 @@ function init_otayori_array() {
 }
 
 function create_otayori(){
-  num_otayori = num_otayori + 1;
-  document.getElementById("otayori_num").innerText = num_otayori;
   otayori_array.push("");
+  document.getElementById("otayori_num").innerText = otayori_array.length;
 }
 
 function load_otayori(idx){
@@ -105,7 +103,7 @@ function load_otayori(idx){
   }else{
     document.getElementById("previous").style.visibility = "visible";
   }
-  if(idx==num_otayori-1){
+  if(idx==otayori_array.length-1){
     document.getElementById("next").innerText = "新規作成";
   }else{
     document.getElementById("next").innerText = "　　次へ";
@@ -121,10 +119,10 @@ function on_previous(){
 }
 
 function on_next(){
-  if(current_otayori_idx==num_otayori-1){
+  if(current_otayori_idx==otayori_array.length-1){
     create_otayori();
   }
-  if(current_otayori_idx<num_otayori-1){
+  if(current_otayori_idx<otayori_array.length-1){
     load_otayori(current_otayori_idx+1);
   }
 }
