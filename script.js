@@ -69,7 +69,6 @@ function fontsize(){
 
 function clear() {
   document.getElementById("otayori_raw").value = "";
-  document.getElementById("otayori_adjusted").value = "";
 }
 
 function example() {
@@ -144,7 +143,9 @@ function initialization(){
 }
 
 let fontSize = 16;
-document.getElementById("clear").addEventListener("click", clear);
+document.getElementById("clear").addEventListener("click", function(){
+  clear();adjust();
+});
 document.getElementById("example").addEventListener("click", example);
 document.getElementById("linespace").addEventListener("input", adjust);
 document.getElementById("fontsize").addEventListener("input", adjust);
