@@ -46,6 +46,7 @@ function linespace() {
 function adjust() {
   let otayori = document.getElementById("otayori_raw").value;
   otayori_array[current_otayori_idx] = otayori;
+  localStorage.setItem('otayori_array', JSON.stringify(otayori_array));
   otayori = format(otayori);
   document.getElementById("otayori_adjusted").value = otayori;
   fontsize();
@@ -85,12 +86,19 @@ var current_otayori_idx = 0;
 var otayori_array = [];
 
 function init_otayori_array() {
-  create_otayori();
+  stored_otayori = JSON.parse(localStorage.getItem('otayori_array'));
+  if(Array.isArray(stored_otayori)){
+    otayori_array = stored_otayori;
+    document.getElementById("otayori_num").innerText = otayori_array.length;
+  }else{
+    create_otayori();
+  }
   load_otayori(0);
 }
 
 function create_otayori(){
   otayori_array.push("");
+  localStorage.setItem('otayori_array', JSON.stringify(otayori_array));
   document.getElementById("otayori_num").innerText = otayori_array.length;
 }
 
