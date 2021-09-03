@@ -39,7 +39,7 @@ function linespace() {
   // 単位なし(推奨): 値を要素のフォントサイズに掛けたもの
   // valueはstringなので注意
   let ls = Number(document.getElementById("linespace").value);
-  localStorage.setItem('linespace', ls);
+  localStorage.setItem('linespace', String(ls));
   document.getElementById("otayori_adjusted").style.lineHeight = ls + 1;
 }
 
@@ -63,7 +63,7 @@ function resize_adjusted_otayori_box(){
 
 function fontsize(){
   let fs = Number(document.getElementById("fontsize").value);
-  localStorage.setItem('fontsize', fs);
+  localStorage.setItem('fontsize', String(fs));
   document.getElementById("otayori_adjusted").style.fontSize = `${fs}px`;
 }
 
@@ -128,11 +128,11 @@ function on_next(){
 }
 
 function init_config(){
-  ls = localStorage.getItem("linespace");
+  ls = Number(localStorage.getItem("linespace"));
   if(ls!=null){
     document.getElementById("linespace").value=`${ls}`;
   }
-  fs = localStorage.getItem("fontsize");
+  fs = Number(localStorage.getItem("fontsize"));
   if(fs!=null){
     document.getElementById("fontsize").value=`${fs}`;
   }
